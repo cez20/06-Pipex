@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fifo_communication1.c                              :+:      :+:    :+:   */
+/*   two_way_com.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/27 12:03:31 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/30 18:32:09 by cemenjiv         ###   ########.fr       */
+/*   Created: 2022/04/28 17:31:03 by cemenjiv          #+#    #+#             */
+/*   Updated: 2022/04/30 18:44:50 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,32 +21,41 @@
 #include <fcntl.h>
 #include <time.h>
 
-// Video called "How to use FIFO files to communicate between processes in C"
-// This video shows how to create 2 programs. One that will generate numbers and the other that
-// will read the numbers and sum them. 
-// 1st program = fifo_communication.c 2nd program = fifo_communication1.c. Importance de creer un executable pour chaque
+// Video is entitled "Two way communication between processes (using pipes) in C"
+
+
 
 int main (int argc, char **argv)
 {
-	int arr[5];
-	int fd = open("sum", O_RDONLY);
-	if (fd == 1)
-	{
+	int p1[2];
+	if (pipe(p1) == -1)
 		return 1;
-	}
-	int i;
-	for (i = 0; i < 5; i++)
+	int pid = fork();
+	if (pid == -1)
+		return 2;
+	if (pid == 0) // We are in the child process
 	{
-		if (read(fd, &arr[i], sizeof(int)) == -1)
-		{
-			return 2;
-		}
-		printf("Received %d\n", arr[i]); // Receiving the numbers that are initially written in other program
+		int x;
+		if (read(p1[0], &x, sizeof(x)) == -1)
+			return 3;
+		printf("Received %d\n", x);	
+		x *= 4;
+		if (write(p1[1], &x, sizeof(x)) == -1)
+			return 4;
+		printf("Wrote %d\n", x);	
 	}
-	close (fd);
-	int sum = 0;
-	for (i = 0; i < 5; i++)
-		sum += arr[i];
-	printf("Result is %d\n", sum); // Writing the sum following the reception of numbers
+	else // Parent process
+	{
+		srand(time(NULL));
+		int y = rand() % 10;
+		if (write(p1[1], &y, sizeof(y)) == -1)
+			return 5;
+		printf("Wrote %d\n", y);
+		if (read (p1[0], &y, sizeof(y)) == -1)
+			printf("Result is %d\n", y);
+		wait(NULL);
+	}
+	close (p1[0]);
+	close (p1[1]);
 	return (0);	
 }
