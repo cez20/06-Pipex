@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   two_way_com.c                                      :+:      :+:    :+:   */
+/*   11_commands_in_C.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 17:31:03 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/30 18:44:50 by cemenjiv         ###   ########.fr       */
+/*   Created: 2022/05/04 10:19:17 by cemenjiv          #+#    #+#             */
+/*   Updated: 2022/05/04 12:37:06 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,43 +19,27 @@
 #include <sys/wait.h> // Library in order to use mkfifo
 #include <sys/errno.h> // Library needed for errno command below. 
 #include <fcntl.h>
-#include <time.h>
+#include <time.h> // necessary for srand(time(NULL) command 
 
-// Video is entitled "Two way communication between processes (using pipes) in C"
+// Video is entitle "Executing commands in C"
+// With exec function, eveything is taken and executed. Thefore, once the exec function is over, verything is over.
+// The commands coded after the exec will not execute.
+// exec never to be done in parent process. 
 
-
-
-int main (int argc, char **argv)
+int main (int argc, char *argv[])
 {
-	int p1[2];
-	if (pipe(p1) == -1)
-		return 1;
 	int pid = fork();
 	if (pid == -1)
-		return 2;
-	if (pid == 0) // We are in the child process
+		return 1;
+	if (pid == 0) // the execlp command replace the child. Thefore anything after this eec command will not show.
 	{
-		int x;
-		if (read(p1[0], &x, sizeof(x)) == -1)
-			return 3;
-		printf("Received %d\n", x);	
-		x *= 4;
-		if (write(p1[1], &x, sizeof(x)) == -1)
-			return 4;
-		printf("Wrote %d\n", x);	
+		execlp("ping", "ping, "-c", "3", "google.com", NULL);
 	}
-	else // Parent process
+	else //Parent process 
 	{
-		srand(time(NULL));
-		int y = rand() % 10;
-		if (write(p1[1], &y, sizeof(y)) == -1)
-			return 5;
-		printf("Wrote %d\n", y);
-		if (read (p1[0], &y, sizeof(y)) == -1)
-			printf("Result is %d\n", y);
 		wait(NULL);
+		printf("Success");
+		printf("Some post processing goes here\n")
 	}
-	close (p1[0]);
-	close (p1[1]);
 	return (0);	
 }

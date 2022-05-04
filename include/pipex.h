@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:04:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/03 15:16:32 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/04 07:10:37 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 int		main();
 
 // *** INPUT_VALIDATION.C ***
-void	input_validation(char **argv);
+//void	input_validation(char **argv);
 
 // *** PIPE_CREATION.C ***
 void	pipe_creation(char **argv);
