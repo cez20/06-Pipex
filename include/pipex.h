@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:04:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/04 07:10:37 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/10 12:34:35 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@
 # include "../libft/libft.h"
 
 // *** MAIN.C ***
-int		main();
+int main (int argc, char **argv, char *env[]);
 
 // *** INPUT_VALIDATION.C ***
 //void	input_validation(char **argv);
 
 // *** PIPE_CREATION.C ***
-void	pipe_creation(char **argv);
+//void	pipe_creation(char **argv);
 
 
 #endif
