@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:04:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/10 12:34:35 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/14 15:07:50 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,15 @@
 # include <sys/errno.h> // Library needed for errno command below. 
 # include "../libft/libft.h"
 
+#define ERR_ARG "Invalid number of arguments!\n"
+
 // *** MAIN.C ***
 int main (int argc, char **argv, char *env[]);
 
-// *** INPUT_VALIDATION.C ***
-//void	input_validation(char **argv);
+// *** FILE_VALIDATION.C ***
+void	file_validation(int argc, char **argv);
 
-// *** PIPE_CREATION.C ***
-//void	pipe_creation(char **argv);
-
+// *** CMD_VALIDATION.C ***
+void	cmd_validation(int argc, char *argv[], char *env[]);
 
 #endif

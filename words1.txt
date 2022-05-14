@@ -1,1 +1,9 @@
-J'ai 34 ans
+total 120
+-rw-r--r--   1 cemenjiv  2021_quebec   1769 14 mai 11:40 Makefile
+drwxr-xr-x  26 cemenjiv  2021_quebec    884 10 mai 15:06 helper
+drwxr-xr-x   3 cemenjiv  2021_quebec    102 12 mai 13:44 include
+drwxr-xr-x  93 cemenjiv  2021_quebec   3162 14 mai 10:38 libft
+-rwxr-xr-x   1 cemenjiv  2021_quebec  49800 14 mai 10:38 pipex
+drwxr-xr-x   8 cemenjiv  2021_quebec    272 14 mai 11:39 srcs
+-rw-r--r--   1 cemenjiv  2021_quebec     19  5 mai 16:10 words.txt
+-rw-r--r--   1 cemenjiv  2021_quebec      0 14 mai 14:07 words1.txt
