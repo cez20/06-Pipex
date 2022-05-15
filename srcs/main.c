@@ -6,28 +6,35 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 13:41:39 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/14 15:07:55 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/15 16:34:13 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	msg(char *err)
-{
-	write(2, err, ft_strlen(err));
-	return (1);
-}
-
 int main (int argc, char *argv[], char *env[])
 {
-	(void)env;
+	char	**args;
+	char	**cmd1;
+	char	*valid_cmd_path;
+
 	if (argc != 5)
 		return (msg(ERR_ARG));
 	file_validation(argc, argv);
-	cmd_validation(argc, argv, env);
+	input_redirection(argv);
+	args = split_path(env);
+	cmd1 = ft_split(argv[2], ' ');
+	valid_cmd_path = valid_cmd(argv, args, cmd1);
+	printf("%s\n", valid_cmd_path);
+
 	return (0);	
 }
 
+int	msg(char *err)
+{
+	write(2, err, ft_strlen(err)); // fd == 2 because associated with STDERR. 
+	exit(EXIT_FAILURE);
+}
 
 
 // int main (int argc, char **argv, char *env[])

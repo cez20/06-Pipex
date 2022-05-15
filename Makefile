@@ -6,13 +6,13 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/28 13:59:50 by cemenjiv          #+#    #+#              #
-#    Updated: 2022/05/14 14:48:13 by cemenjiv         ###   ########.fr        #
+#    Updated: 2022/05/15 10:54:35 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= pipex  #nom de l'executable que l'on veut creer 
 
-SRCS			= srcs/main.c srcs/file_validation.c srcs/cmd_validation.c
+SRCS			= srcs/main.c srcs/file_validation.c srcs/cmds_validation.c
 
 HEADER			= -Iinclude/
 				  	  
