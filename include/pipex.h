@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:04:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/15 16:24:30 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/15 17:43:05 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,9 @@ int	msg(char *err);
 void	file_validation(int argc, char **argv);
 
 // *** CMD_VALIDATION.C ***
-void	cmds_validation(int argc, char *argv[], char *env[]);
 void	input_redirection(char *argv[]);
-char	**split_path(char *env[]);
-char	*valid_cmd(char *argv[], char *args[], char **cmd1);
+char	**split_path(char **env, char **paths);
+char	*get_cmd(char **path, char **cmd);
 void	free_memory(char *args[]);
 
 #endif
