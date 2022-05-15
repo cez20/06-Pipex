@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:04:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/14 15:07:50 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/14 22:54:50 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ void	file_validation(int argc, char **argv);
 
 // *** CMD_VALIDATION.C ***
 void	cmd_validation(int argc, char *argv[], char *env[]);
+void    split_path(char *argv[],char *env[]);
 
 #endif
