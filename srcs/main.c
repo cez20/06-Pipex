@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 13:41:39 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/16 13:22:01 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/16 14:49:55 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int main (int argc, char *argv[], char *env[])
 	paths = split_path(env);
 	cmd_path = valid_cmd(argv, paths, cmd);
 	pipex(cmd_path, cmd, infile, env);
-	
 	
 	//ELEMENTS TO REMEMBER TO FREE
 	free_memory(paths); // free_memory function is used with double pointers. 
