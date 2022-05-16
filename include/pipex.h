@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:04:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/16 14:42:09 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/16 15:50:06 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,18 @@ int 	main (int argc, char **argv, char *env[]);
 
 // *** ERROR.C ***
 int		msg(char *err);
-char* 	msg_cmd(char *argv[], char *err);
+void	msg_cmd1(char **argv, char *err);
+void	msg_cmd2(char **argv, char *err);
 char	**msg_path(char *err);
 
 // *** INPUT_VALIDATION.C ***
 int		open_infile(char **argv);
 char	**split_path(char **env);
 char	*valid_cmd(char **argv, char **path, char **cmd);
+char	*valid_cmd1(char **argv, char **path, char **cmd);
 void	free_memory(char *args[]);
 
 // ** PIPEX.C *** //
-int pipex (char *path, char **cmd, int infile, char **env);
+int pipex (char *path1, char *path2, char **cmd1, char **cmd2, int infile, int outfile, char **env);
 
 #endif
