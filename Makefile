@@ -6,13 +6,13 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/28 13:59:50 by cemenjiv          #+#    #+#              #
-#    Updated: 2022/05/16 13:21:49 by cemenjiv         ###   ########.fr        #
+#    Updated: 2022/05/17 17:19:58 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= pipex  #nom de l'executable que l'on veut creer 
 
-SRCS			= srcs/main.c srcs/input_validation.c srcs/error.c srcs/pipex.c
+SRCS			= srcs/main.c srcs/input_validation.c srcs/error_handling.c srcs/pipex.c
 HEADER			= -Iinclude/
 				  	  
 OBJS			= $(SRCS:.c=.o) #Declaration OBJS (objets). Tous les fichiers terminant par le suffixe .c vont devenir .o

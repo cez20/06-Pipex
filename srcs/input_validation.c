@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:08:15 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/16 22:13:54 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/17 17:30:14 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,19 @@ int	open_infile(char **argv)
 	return (infile);
 }
 
-void	create_path_exe(char **argv, char **env, t_pipex *pipex)
-{
-	pipex->paths = split_path(env);
-	create_commands(pipex, argv);
-	pipex->path_exe = merge_paths_commands(pipex);
-}
-
 char	**split_path(char **env)
 {
 	int	i;
+	char	**str;
 
 	i = 0;
 	while (env[i])
 	{
 		if (ft_strnstr(env[i], "PATH=", 5))
-			return (ft_split(&env[i][5], ':'));
+		{
+			str = ft_split(&env[i][5], ':');
+			return (str);
+		}
 		i++;
 	}
 	return (msg_path(ERR_PATH));
@@ -75,42 +72,32 @@ char	*merge_paths_commands(t_pipex *pipex)
 	return (NULL);
 }
 
-// char	*valid_cmd(char **argv, char **path, char **cmd)
+char	*merge_paths_commands1(t_pipex *pipex)
+{
+	char	*tmp;
+	char	*cmd_exe;
+	int		i;
+
+	i = 0;
+	while (pipex->paths[i])
+	{
+		tmp = ft_strjoin(pipex->paths[i], "/");
+		cmd_exe = ft_strjoin(tmp, pipex->cmd2[0]);
+		free(tmp);
+		if (access(cmd_exe, X_OK) != -1)
+			return (cmd_exe);
+		free(cmd_exe);
+		i++;
+	}
+	msg_cmd1(pipex->cmd2[0], ERR_CMD);
+	return (NULL);
+}
+
+// void	create_path_exe(char **argv, char **env, t_pipex *pipex)
 // {
-// 	char	*tmp;
-// 	char	*command;
-
-// 	while (*path)
-// 	{
-// 		tmp = ft_strjoin(*path, "/");
-// 		command = ft_strjoin(tmp, cmd[0]);
-// 		free(tmp);
-// 		if (access(command, X_OK) != -1)
-// 			return (command);
-// 		free(command);
-// 		path++;
-// 	}
-// 	msg_cmd1(argv, ERR_CMD);
-// 	return (NULL);
-// }
-
-// char	*valid_cmd1(char **argv, char **path, char **cmd)
-// {
-// 	char	*tmp;
-// 	char	*command;
-
-// 	while (*path)
-// 	{
-// 		tmp = ft_strjoin(*path, "/");
-// 		command = ft_strjoin(tmp, cmd[0]);
-// 		free(tmp);
-// 		if (access(command, X_OK) != -1)
-// 			return (command);
-// 		free(command);
-// 		path++;
-// 	}
-// 	msg_cmd2(argv, ERR_CMD);
-// 	return (NULL);
+// 	pipex->paths = split_path(env);
+// 	create_commands(pipex, argv);
+// 	pipex->path_exe = merge_paths_commands(pipex);
 // }
 
 void	free_memory(char *args[])

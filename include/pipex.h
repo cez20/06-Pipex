@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:04:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/16 22:24:56 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/17 17:30:02 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,15 @@ typedef struct s_pipex
     char    **paths;
     char    **cmd1;
     char    **cmd2;
-    char    *path_exe;
+    char    *path_exe1;
+	char	*path_exe2;
+	
 }       t_pipex;
 
 // *** MAIN.C ***
 int 	main (int argc, char **argv, char *env[]);
+t_pipex	*initialize_pipex();
+void	free_memory(char *args[])
 
 // *** ERROR.C ***
 int		msg(char *err);
@@ -49,13 +53,12 @@ char	**msg_path(char *err);
 
 // *** INPUT_VALIDATION.C ***
 int		open_infile(char **argv);
-void	create_path_exe(char **argv, char **env, t_pipex *pipex);
 char	**split_path(char **env);
 void	create_commands(t_pipex *pipex, char **argv);
 char	*merge_paths_commands(t_pipex *pipex);
-void	free_memory(char *args[]);
+char	*merge_paths_commands1(t_pipex *pipex);
 
 // ** PIPEX.C *** //
-int pipex (char *path1, char *path2, char **cmd1, char **cmd2, int infile, int outfile, char **env);
+int create_pipe (t_pipex *pipex, char **env);
 
 #endif
