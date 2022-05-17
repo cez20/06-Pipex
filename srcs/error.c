@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 07:43:57 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/16 15:48:46 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/16 21:49:37 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int	msg(char *err)
 	exit(EXIT_FAILURE);
 }
 
-void	msg_cmd1(char **argv, char *err)
+void	msg_cmd1(char *argv, char *err)
 {
 	char	*string;
 
-	string = ft_strjoin("bash: ", argv[2]);
+	string = ft_strjoin("bash: ", argv);
 	write(2, string, ft_strlen(string));
 	write(2, err, ft_strlen(err));
 }

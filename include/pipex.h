@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:04:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/16 15:50:06 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/16 22:24:56 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,30 @@
 #define ERR_PIPE "Pipe creation is impossible\n"
 #define ERR_FORK "Fork() command has a problem\n"
 
+typedef struct s_pipex
+{
+    int     infile;
+    int     outfile;
+    char    **paths;
+    char    **cmd1;
+    char    **cmd2;
+    char    *path_exe;
+}       t_pipex;
+
 // *** MAIN.C ***
 int 	main (int argc, char **argv, char *env[]);
 
 // *** ERROR.C ***
 int		msg(char *err);
-void	msg_cmd1(char **argv, char *err);
-void	msg_cmd2(char **argv, char *err);
+void	msg_cmd1(char *argv, char *err);
 char	**msg_path(char *err);
 
 // *** INPUT_VALIDATION.C ***
 int		open_infile(char **argv);
+void	create_path_exe(char **argv, char **env, t_pipex *pipex);
 char	**split_path(char **env);
-char	*valid_cmd(char **argv, char **path, char **cmd);
-char	*valid_cmd1(char **argv, char **path, char **cmd);
+void	create_commands(t_pipex *pipex, char **argv);
+char	*merge_paths_commands(t_pipex *pipex);
 void	free_memory(char *args[]);
 
 // ** PIPEX.C *** //
