@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:08:15 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/17 17:30:14 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/18 17:06:49 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	open_infile(char **argv)
 {
-	char	*string;
+	char	*string; // Est-ce que je devrais malloc le string ici 
 	int		infile;
 
 	infile = open(argv[1], O_RDWR);
@@ -99,13 +99,3 @@ char	*merge_paths_commands1(t_pipex *pipex)
 // 	create_commands(pipex, argv);
 // 	pipex->path_exe = merge_paths_commands(pipex);
 // }
-
-void	free_memory(char *args[])
-{
-	int	i;
-
-	i = 0;
-	while (args[i])
-		free(args[i++]);
-	free (args);
-}

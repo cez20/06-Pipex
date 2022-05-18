@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 13:41:39 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/17 17:30:26 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/18 17:09:29 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,12 @@ int	main(int argc, char *argv[], char *env[])
 	pipex->path_exe1 = merge_paths_commands(pipex);
 	pipex->path_exe2 = merge_paths_commands1(pipex);
 	create_pipe(pipex, env);
-	//free_memory
+	free_memory(pipex->paths);
+	free_memory(pipex->cmd1);
+	free_memory(pipex->cmd2);
+	free(pipex->path_exe1);
+	free(pipex->path_exe2);
+	free(pipex);
 	return (0);
 }
 
