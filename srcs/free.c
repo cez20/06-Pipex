@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handling.c                                   :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/16 07:43:57 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/19 16:52:01 by cemenjiv         ###   ########.fr       */
+/*   Created: 2022/05/19 16:10:03 by cemenjiv          #+#    #+#             */
+/*   Updated: 2022/05/19 16:10:30 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	error(char *err)
+void	free_memory(t_pipex pipex)
 {
-	write(2, err, ft_strlen(err));
-	exit(EXIT_FAILURE);
+	free_dpointers(pipex.paths);
+	free_dpointers(pipex.cmd1);
+	free_dpointers(pipex.cmd2);
+	free(pipex.path_exe1);
+	free(pipex.path_exe2);	 
 }
 
-void	error_cmd(char *cmd, char *err) // Il n'y a pas d'EXIT FAILURE parce que , la 2e commande peut aussi etre errone
+void	free_dpointers(char *args[])
 {
-	char	*string;
+	int	i;
 
-	string = ft_strjoin("bash: ", cmd);
-	write(2, string, ft_strlen(string));
-	write(2, err, ft_strlen(err));
-	free(string);
-}
-
-char	**error_path(char *err)
-{
-	write(2, err, ft_strlen(err));
-	exit(EXIT_FAILURE);
+	i = 0;
+	while (args[i])
+		free(args[i++]);
+	free (args);
 }

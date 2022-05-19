@@ -1,8 +1,0 @@
-Makefile
-helper
-include
-libft
-pipex
-srcs
-words.txt
-words1.txt

@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:08:15 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/18 23:42:21 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/19 16:50:50 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	open_infile(char **argv)
 {
-	char	*string; // Est-ce que je devrais malloc le string ici 
+	char	*string;
 	int		infile;
 
 	infile = open(argv[1], O_RDWR);
@@ -22,7 +22,7 @@ int	open_infile(char **argv)
 	{
 		string = ft_strjoin("bash: ", argv[1]);
 		perror(string);
-		exit (EXIT_FAILURE); // legit, because program stops even though rest is good.
+		exit (EXIT_FAILURE);
 	}
 	return (infile);
 }
@@ -30,9 +30,8 @@ int	open_infile(char **argv)
 char	**split_path(char **env)
 {
 	char	**str;
-	int	i;
-	
-	
+	int		i;
+
 	i = 0;
 	while (env[i])
 	{
@@ -43,7 +42,7 @@ char	**split_path(char **env)
 		}
 		i++;
 	}
-	return (msg_path(ERR_PATH));
+	return (error_path(ERR_PATH));
 }
 
 void	create_commands(t_pipex *pipex, char **argv)
@@ -52,7 +51,7 @@ void	create_commands(t_pipex *pipex, char **argv)
 	(*pipex).cmd2 = ft_split(argv[3], ' ');
 }
 
-char	*merge_paths_commands(t_pipex *pipex)
+char	*merge_paths_cmd1(t_pipex *pipex)
 {
 	char	*tmp;
 	char	*cmd_exe;
@@ -69,11 +68,11 @@ char	*merge_paths_commands(t_pipex *pipex)
 		free(cmd_exe);
 		i++;
 	}
-	msg_cmd1((*pipex).cmd1[0], ERR_CMD);
+	error_cmd((*pipex).cmd1[0], ERR_CMD);
 	return (NULL);
 }
 
-char	*merge_paths_commands1(t_pipex *pipex)
+char	*merge_paths_cmd2(t_pipex *pipex)
 {
 	char	*tmp;
 	char	*cmd_exe;
@@ -90,6 +89,6 @@ char	*merge_paths_commands1(t_pipex *pipex)
 		free(cmd_exe);
 		i++;
 	}
-	msg_cmd1((*pipex).cmd2[0], ERR_CMD);
+	error_cmd((*pipex).cmd2[0], ERR_CMD);
 	return (NULL);
 }
