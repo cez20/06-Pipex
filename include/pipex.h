@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:04:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/18 16:55:22 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/18 23:18:53 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ typedef struct s_pipex
     char    **cmd2;
     char    *path_exe1;
 	char	*path_exe2;
-	
-}       t_pipex;
+    char    *path_env;
+}           t_pipex;
 
 // *** MAIN.C ***
 int 	main (int argc, char **argv, char *env[]);
@@ -55,7 +55,8 @@ char	**msg_path(char *err);
 int		open_infile(char **argv);
 char	**split_path(char **env);
 void	create_commands(t_pipex *pipex, char **argv);
-char	*merge_paths_commands(t_pipex *pipex);
+char	*merge_paths_commands();
+//char	*merge_paths_commands(t_pipex *pipex);
 char	*merge_paths_commands1(t_pipex *pipex);
 
 // ** PIPEX.C *** //

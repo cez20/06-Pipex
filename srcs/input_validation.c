@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:08:15 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/18 17:06:49 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/18 23:42:21 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@ int	open_infile(char **argv)
 
 char	**split_path(char **env)
 {
-	int	i;
 	char	**str;
-
+	int	i;
+	
+	
 	i = 0;
 	while (env[i])
 	{
@@ -47,8 +48,8 @@ char	**split_path(char **env)
 
 void	create_commands(t_pipex *pipex, char **argv)
 {
-	pipex->cmd1 = ft_split(argv[2], ' ');
-	pipex->cmd2 = ft_split(argv[3], ' ');
+	(*pipex).cmd1 = ft_split(argv[2], ' ');
+	(*pipex).cmd2 = ft_split(argv[3], ' ');
 }
 
 char	*merge_paths_commands(t_pipex *pipex)
@@ -58,17 +59,17 @@ char	*merge_paths_commands(t_pipex *pipex)
 	int		i;
 
 	i = 0;
-	while (pipex->paths[i])
+	while ((*pipex).paths[i])
 	{
-		tmp = ft_strjoin(pipex->paths[i], "/");
-		cmd_exe = ft_strjoin(tmp, pipex->cmd1[0]);
+		tmp = ft_strjoin((*pipex).paths[i], "/");
+		cmd_exe = ft_strjoin(tmp, (*pipex).cmd1[0]);
 		free(tmp);
 		if (access(cmd_exe, X_OK) != -1)
 			return (cmd_exe);
 		free(cmd_exe);
 		i++;
 	}
-	msg_cmd1(pipex->cmd1[0], ERR_CMD);
+	msg_cmd1((*pipex).cmd1[0], ERR_CMD);
 	return (NULL);
 }
 
@@ -79,23 +80,16 @@ char	*merge_paths_commands1(t_pipex *pipex)
 	int		i;
 
 	i = 0;
-	while (pipex->paths[i])
+	while ((*pipex).paths[i])
 	{
-		tmp = ft_strjoin(pipex->paths[i], "/");
-		cmd_exe = ft_strjoin(tmp, pipex->cmd2[0]);
+		tmp = ft_strjoin((*pipex).paths[i], "/");
+		cmd_exe = ft_strjoin(tmp, (*pipex).cmd2[0]);
 		free(tmp);
 		if (access(cmd_exe, X_OK) != -1)
 			return (cmd_exe);
 		free(cmd_exe);
 		i++;
 	}
-	msg_cmd1(pipex->cmd2[0], ERR_CMD);
+	msg_cmd1((*pipex).cmd2[0], ERR_CMD);
 	return (NULL);
 }
-
-// void	create_path_exe(char **argv, char **env, t_pipex *pipex)
-// {
-// 	pipex->paths = split_path(env);
-// 	create_commands(pipex, argv);
-// 	pipex->path_exe = merge_paths_commands(pipex);
-// }
