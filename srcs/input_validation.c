@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:08:15 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/20 13:41:43 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/20 16:39:45 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,17 @@ char	*merge_paths_cmd1(t_pipex *pipex)
 	int		i;
 
 	i = 0;
-	while ((*pipex).paths[i])
+	while (pipex->paths[i])
 	{
-		path = ft_strjoin((*pipex).paths[i], "/");
-		cmd_exe = ft_strjoin(tmp, (*pipex).cmd1[0]);
+		path = ft_strjoin(pipex->paths[i], "/");
+		cmd_exe = ft_strjoin(path, pipex->cmd1[0]);
 		free(path);
 		if (access(cmd_exe, X_OK) != -1)
 			return (cmd_exe);
 		free(cmd_exe);
 		i++;
 	}
-	error_cmd((*pipex).cmd1[0], ERR_CMD);
+	error_cmd(pipex->cmd1[0], ERR_CMD);
 	return (NULL);
 }
 
@@ -82,14 +82,14 @@ char	*merge_paths_cmd2(t_pipex *pipex)
 	i = 0;
 	while ((*pipex).paths[i])
 	{
-		tmp = ft_strjoin((*pipex).paths[i], "/");
-		cmd_exe = ft_strjoin(tmp, (*pipex).cmd2[0]);
+		tmp = ft_strjoin(pipex->paths[i], "/");
+		cmd_exe = ft_strjoin(tmp, pipex->cmd2[0]);
 		free(tmp);
 		if (access(cmd_exe, X_OK) != -1)
 			return (cmd_exe);
 		free(cmd_exe);
 		i++;
 	}
-	error_cmd((*pipex).cmd2[0], ERR_CMD);
+	error_cmd(pipex->cmd2[0], ERR_CMD);
 	return (NULL);
 }

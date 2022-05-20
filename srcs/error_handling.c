@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 07:43:57 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/19 16:52:01 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/20 17:20:52 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	error(char *err)
 	exit(EXIT_FAILURE);
 }
 
-void	error_cmd(char *cmd, char *err) // Il n'y a pas d'EXIT FAILURE parce que , la 2e commande peut aussi etre errone
+void	error_cmd(char *cmd, char *err)
 {
 	char	*string;
 
