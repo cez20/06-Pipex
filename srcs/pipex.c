@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 07:07:39 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/20 13:35:08 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/20 13:37:10 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int	create_pipe(t_pipex *pipex, char **env)
 		dup2(fd[1], STDOUT_FILENO);
 		close (fd[0]);
 		dup2((*pipex).infile, STDIN_FILENO);
-		if ((*pipex).path_exe1 != NULL)
+		if ((*pipex).path_exe1 != NULL) // On execute la commande seulement si 
 			execve((*pipex).path_exe1, (*pipex).cmd1, env);
-		free_memory(*pipex);
+		free_memory(*pipex); 
 		exit(EXIT_FAILURE); // Quitte le programme donc en d'atre mots qui la memoire du child. 
 	}
 	pid2 = fork();
