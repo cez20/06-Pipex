@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:08:15 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/20 12:28:21 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/20 13:41:43 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,16 @@ void	create_commands(t_pipex *pipex, char **argv)
 
 char	*merge_paths_cmd1(t_pipex *pipex)
 {
-	char	*tmp;
+	char	*path;
 	char	*cmd_exe;
 	int		i;
 
 	i = 0;
 	while ((*pipex).paths[i])
 	{
-		tmp = ft_strjoin((*pipex).paths[i], "/");
+		path = ft_strjoin((*pipex).paths[i], "/");
 		cmd_exe = ft_strjoin(tmp, (*pipex).cmd1[0]);
-		free(tmp);
+		free(path);
 		if (access(cmd_exe, X_OK) != -1)
 			return (cmd_exe);
 		free(cmd_exe);
