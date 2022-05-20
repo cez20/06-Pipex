@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 13:41:39 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/20 10:19:11 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/20 12:21:05 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,3 @@ int	main(int argc, char *argv[], char *env[])
 		return (error(ERR_ARG));
 	return (0);
 }
-
-
-
-

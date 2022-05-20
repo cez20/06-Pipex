@@ -7,12 +7,3 @@ pipex.dSYM
 srcs
 words.txt
 words1.txt
-Makefile
-helper
-include
-libft
-pipex
-pipex.dSYM
-srcs
-words.txt
-words1.txt

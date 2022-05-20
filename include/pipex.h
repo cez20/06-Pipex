@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:04:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/19 16:51:06 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/20 12:32:50 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct s_pipex
 
 // *** MAIN.C ***
 int 	main (int argc, char **argv, char *env[]);
-t_pipex	*initialize_pipex();
 void	free_dpointers(char *args[]);
 void	free_memory(t_pipex pipex);
 
