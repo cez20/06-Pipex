@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 07:07:39 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/24 11:53:24 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/24 13:13:27 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	command_execution(t_pipex *pipex, char **env)
 	first_fork(pipex, env);
 	second_fork(pipex, env);
 	close(pipex->fd[0]);
-	close(pipex->fd[1]);	
+	close(pipex->fd[1]);
 	waitpid(pipex->pid1, NULL, 0);
 	waitpid(pipex->pid2, NULL, 0);
 	return (0);
@@ -35,7 +35,7 @@ void	first_fork(t_pipex *pipex, char **env)
 		close (pipex->fd[0]);
 		dup2(pipex->infile, STDIN_FILENO);
 		dup2(pipex->fd[1], STDOUT_FILENO);
-		if (pipex->path_exe1 != NULL)
+		if (pipex->path_exe1 != NULL && pipex->infile != -1)
 			execve(pipex->path_exe1, pipex->cmd1, env);
 		free_memory(*pipex);
 		exit (EXIT_FAILURE);

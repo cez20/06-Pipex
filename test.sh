@@ -74,7 +74,18 @@ diff SameFile SameFile2
 rm -rf SameFile SameFile2
 printf "\033[1;32mIF NO WRITING BELOW EVERYTHING WORKED PROPERLY!\n\n\033[1;0m"
 
-
+printf "\n\033[1;33m--------------RUNNING THE TEST WITH AN ABSOLUTE PATH--------------\n\033[1;0m"
+# printf "\033[1;31m--------------SHOULD BE AN ERROR--------------\n\033[1;33m"
+printf "\033[1;34mSCRIPT TEST IS DONE WITH ./pipex SameFile cat wc SameFile \n\033[1;0m"
+printf "\033[1;34mSCRIPT TEST IS DONE WITH<SameFile2 cat | wc >SameFile2 \n\033[1;0m"
+printf "\033[1;34mDIFF HAS BEEN DONE ON SameFile Samefile2\n\033[1;0m"
+echo THIS IS THE SAME > SameFile
+echo THIS IS THE SAME > SameFile2
+./pipex SameFile "/bin/ls" "/bin/cat" SameFile
+<SameFile2 "/bin/ls" | "/bin/cat" >SameFile2
+diff SameFile SameFile2
+rm -rf SameFile SameFile2
+printf "\033[1;32mIF NO WRITING BELOW EVERYTHING WORKED PROPERLY!\n\n\033[1;0m"
 
 
 
