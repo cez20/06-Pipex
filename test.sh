@@ -88,6 +88,27 @@ rm -rf SameFile SameFile2
 printf "\033[1;32mIF NO WRITING BELOW EVERYTHING WORKED PROPERLY!\n\n\033[1;0m"
 
 
+printf "\n\033[1;33m--------------RUNNING THE TEST WITH ALWAYS UPDATING FILE--------------\n\033[1;0m"
+# printf "\033[1;31m--------------SHOULD BE AN ERROR--------------\n\033[1;33m"
+printf "\033[1;34mSCRIPT TEST IS DONE WITH ./pipex SameFile cat wc SameFile \n\033[1;0m"
+printf "\033[1;34mSCRIPT TEST IS DONE WITH<SameFile2 cat | wc >SameFile2 \n\033[1;0m"
+./pipex "/dev/urandom" "cat" "head -n 1" "Samefile2"
+<"/dev/urandom" cat | "head" >SameFile2
+cat SameFile2
+rm -rf SameFile2
+printf "\033[1;32mIF NO WRITING BELOW EVERYTHING WORKED PROPERLY!\n\n\033[1;0m"
+
+
+
+#printf "\n\033[1;33m--------------RUNNING THE TEST WHEN NO PATH COULD BE FOUND--------------\n\033[1;0m"
+# printf "\033[1;31m--------------SHOULD BE AN ERROR--------------\n\033[1;33m"
+#printf "\033[1;34mSCRIPT TEST IS DONE WITH ./pipex SameFile cat wc SameFile \n\033[1;0m"
+#unset PATH
+#./pipex file1 ls cat SameFile2
+#< file1 ls | cat >SameFile2
+#rm -rf SameFile2
+#printf "\033[1;32mIF NO WRITING BELOW EVERYTHING WORKED PROPERLY!\n\n\033[1;0m"
+
 
 # ------------------------------------STD TEST----------------------------------- 
 
