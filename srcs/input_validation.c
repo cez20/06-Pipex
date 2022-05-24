@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:08:15 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/21 21:58:10 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/24 12:52:02 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ char	*merge_paths_cmd1(t_pipex *pipex)
 	int		i;
 
 	i = 0;
+	if (access(pipex->cmd1[0], X_OK) != -1)
+		return (ft_strdup(pipex->cmd1[0]));
 	while (pipex->paths[i])
 	{
 		path = ft_strjoin(pipex->paths[i], "/");
@@ -79,6 +81,8 @@ char	*merge_paths_cmd2(t_pipex *pipex)
 	int		i;
 
 	i = 0;
+	if (access(pipex->cmd2[0], X_OK) != -1)
+		return (ft_strdup(pipex->cmd2[0]));
 	while ((*pipex).paths[i])
 	{
 		tmp = ft_strjoin(pipex->paths[i], "/");

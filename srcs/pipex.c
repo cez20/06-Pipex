@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 07:07:39 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/21 22:46:32 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/24 11:53:24 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	first_fork(t_pipex *pipex, char **env)
 		close (pipex->fd[0]);
 		dup2(pipex->infile, STDIN_FILENO);
 		dup2(pipex->fd[1], STDOUT_FILENO);
-		if (pipex->path_exe1 != NULL && pipex->infile != -1)
+		if (pipex->path_exe1 != NULL)
 			execve(pipex->path_exe1, pipex->cmd1, env);
 		free_memory(*pipex);
 		exit (EXIT_FAILURE);

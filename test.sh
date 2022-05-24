@@ -59,7 +59,7 @@ rm -rf YOURMOMA3
 <YOURMOMA3 cat | wc >file3
 diff OUTFILE file3
 rm -rf OUTFILE
-printf "\033[1;32mIF NO PRINT FROM DIFF YOU WON (you should still have 2 white line over this)\n\n\033[1;0m"
+printf "\033[1;32mIF NO WRITING ON TERMINAL, EVERYTHING WORKED PROPERLY(you should still have 2 white line over this)\n\n\033[1;0m"
 
 printf "\n\033[1;33m--------------RUNNING THE TEST WITH SAME INPUT FILE AS OUTPUT FILE--------------\n\033[1;0m"
 # printf "\033[1;31m--------------SHOULD BE AN ERROR--------------\n\033[1;33m"
@@ -72,7 +72,7 @@ echo THIS IS THE SAME > SameFile2
 <SameFile2 cat | wc >SameFile2
 diff SameFile SameFile2
 rm -rf SameFile SameFile2
-printf "\033[1;32mIF NO PRINT FROM DIFF YOU WON \n\n\033[1;0m"
+printf "\033[1;32mIF NO WRITING BELOW EVERYTHING WORKED PROPERLY!\n\n\033[1;0m"
 
 
 
@@ -91,7 +91,7 @@ printf "\033[1;34mSCRIPT TEST IS DONE diff YOURMOMA YOURMOMA2\n\033[1;0m"
 diff YOURMOMA YOURMOMA2
 rm -rf YOURMOMA
 rm -rf YOURMOMA2
-printf "\033[1;32mIF NO WHITE ON PROMPT YOU WON\n\n\033[1;0m"
+printf "\033[1;32mIF NO WRITING ON TERMINAL BELOW, EVERYTHING WORKED PROPERLY\n\n\033[1;0m"
 
 printf "\033[1;33m--------------RUNNING THE TEST FOR LS WC --------------\n\033[1;0m"
 printf "\033[1;34mSCRIPT TEST IS DONE WITH ./pipex file1 ls wc file2 \n\033[1;0m"
@@ -100,7 +100,7 @@ printf "\033[1;34mDIFF HAS BEEN DONE ON file2 file3\n\033[1;0m"
 ./pipex file1 ls wc file2
 <file1 ls | wc >file3
 diff file2 file3 
-printf "\033[1;32mIF NO WHITE ON PROMPT YOU WON\n\n\033[1;0m"
+printf "\033[1;32mIF NO WRITING ON TERMINAL BELOW, EVEYTHING WORKED PROPERLY\n\n\033[1;0m"
 
 printf "\033[1;33m--------------RUNNING THE TEST FOR ls -l and wc -l --------------\n\033[1;0m"
 printf "\033[1;34mSCRIPT TEST IS DONE WITH ./pipex file1 \"ls -l\" \"wc -l\" lass file2 \n\033[1;0m"
@@ -109,7 +109,7 @@ printf "\033[1;34mDIFF HAS BEEN DONE ON file2 file3\n\033[1;0m"
 ./pipex file1 "ls -l" "wc -l" file2
 <file1 ls -l | wc -l >file3
 diff file2 file3 
-printf "\033[1;32mIF THE COMMANDS WORKED NO WHITE ON PROMPT YOU WON\n\n\n\n\n\n\033[1;0m"
+printf "\033[1;32mIF THE COMMANDS WORKED IF NO WRITING ON TERMINAL BELOW\n\n\n\n\n\n\033[1;0m"
 
 
 
@@ -124,3 +124,6 @@ valgrind --leak-check=full --trace-children=yes --show-leak-kinds=all -s ./pipex
 make fclean
 rm -rf pipex.dSYM here_doc 
 rm -rf YOURMOMA3
+
+
+# valgrind --leak-check=full --trace-children=yes --show-leak-kinds=all --track-fds=yes
