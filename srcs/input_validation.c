@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:08:15 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/20 16:39:45 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/21 21:58:10 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	open_infile(char **argv)
 		string = ft_strjoin("bash: ", argv[1]);
 		perror(string);
 		free(string);
-		exit (EXIT_FAILURE);
 	}
 	return (infile);
 }
