@@ -1,9 +1,0 @@
-Makefile
-file1
-file2
-include
-libft
-pipex
-pipex.dSYM
-srcs
-test.sh
