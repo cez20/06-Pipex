@@ -6,7 +6,7 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/28 13:59:50 by cemenjiv          #+#    #+#              #
-#    Updated: 2022/05/20 10:19:39 by cemenjiv         ###   ########.fr        #
+#    Updated: 2022/06/15 15:24:46 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ all:			$(NAME)  #commande "make all" fait ce que la variable NAME fait
 
 $(NAME):		$(OBJS)  #Convertis tous les fichiers sources (.c) and fichier objet (.o)
 				$(MAKE) bonus -C ./libft 
-				$(CC) ${OBJS} -L libft -l ft -o ${NAME}			
+				$(CC) ${OBJS} -L libft -l ft -o $@			
 
 				
 clean:		

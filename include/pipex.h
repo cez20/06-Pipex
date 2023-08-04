@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:04:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/20 17:29:19 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/26 19:17:31 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	**error_path(char *err);
 void	error_cmd(char *cmd, char *err);
 
 // *** INPUT_VALIDATION.C ***
-int		open_infile(char **argv);
+void	open_infile(char **argv, int *infile);
 char	**split_path(char **env);
 void	create_commands(t_pipex *pipex, char **argv);
 char	*merge_paths_cmd1(t_pipex *pipex);

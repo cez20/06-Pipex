@@ -6,25 +6,24 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:08:15 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/05/24 12:52:02 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/05/26 18:58:15 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	open_infile(char **argv)
+void	open_infile(char **argv, int *infile)
 {
 	char	*string;
-	int		infile;
 
-	infile = open(argv[1], O_RDWR);
-	if (infile == -1)
+	*infile = open(argv[1], O_RDWR);
+	if (*infile == -1)
 	{
 		string = ft_strjoin("bash: ", argv[1]);
 		perror(string);
 		free(string);
 	}
-	return (infile);
+	close (*infile);
 }
 
 char	**split_path(char **env)
@@ -47,8 +46,8 @@ char	**split_path(char **env)
 
 void	create_commands(t_pipex *pipex, char **argv)
 {
-	(*pipex).cmd1 = ft_split(argv[2], ' ');
-	(*pipex).cmd2 = ft_split(argv[3], ' ');
+	pipex->cmd1 = ft_split(argv[2], ' ');
+	pipex->cmd2 = ft_split(argv[3], ' ');
 }
 
 char	*merge_paths_cmd1(t_pipex *pipex)
@@ -83,7 +82,7 @@ char	*merge_paths_cmd2(t_pipex *pipex)
 	i = 0;
 	if (access(pipex->cmd2[0], X_OK) != -1)
 		return (ft_strdup(pipex->cmd2[0]));
-	while ((*pipex).paths[i])
+	while (pipex->paths[i])
 	{
 		tmp = ft_strjoin(pipex->paths[i], "/");
 		cmd_exe = ft_strjoin(tmp, pipex->cmd2[0]);
